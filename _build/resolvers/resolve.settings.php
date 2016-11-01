@@ -137,7 +137,30 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
             'key'       => 'unauthorized_page',
         ), '', true, true);
         $tmp->save();
-        
+
+
+        $default_template = 'Внутренняя страница';
+        if ($template = $modx->getObject('modTemplate', array('templatename' => $default_template))) {
+            $template = $template->id;
+        }else{
+            $template = 3;
+        }
+        if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'default_template'))) {
+            $tmp = $modx->newObject('modSystemSetting');
+        }
+        $tmp->fromArray(array(
+            'namespace' => 'core',
+            'area'      => 'site',
+            'xtype'     => 'modx-combo-template',
+            'value'     => $template,
+            'key'       => 'default_template',
+        ), '', true, true);
+        $tmp->save();
+
+        //Удаляем начальный шаблон
+        if($template = $modx->getObject('modTemplate', array('templatename' => 'Начальный шаблон'))){
+            $template->remove();
+        }
         
         if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'error_page_header'))) {
             $tmp = $modx->newObject('modSystemSetting');
@@ -170,9 +193,9 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         }
         $tmp->fromArray(array(
             'namespace' => 'ace',
-            'area'      => 'setting_ace.font_size',
+            'area'      => 'general',
             'xtype'     => 'textfield',
-            'value'     => '14',
+            'value'     => '15px',
             'key'       => 'ace.font_size',
         ), '', true, true);
         $tmp->save();
@@ -182,10 +205,22 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         }
         $tmp->fromArray(array(
             'namespace' => 'ace',
-            'area'      => 'setting_ace.theme',
+            'area'      => 'general',
             'xtype'     => 'textfield',
             'value'     => 'monokai',
             'key'       => 'ace.theme',
+        ), '', true, true);
+        $tmp->save();
+
+        if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'ace.word_wrap'))) {
+            $tmp = $modx->newObject('modSystemSetting');
+        }
+        $tmp->fromArray(array(
+            'namespace' => 'ace',
+            'area'      => 'general',
+            'xtype'     => 'combo-boolean',
+            'value'     => '1',
+            'key'       => 'ace.word_wrap',
         ), '', true, true);
         $tmp->save();
 
@@ -195,7 +230,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         }
         $tmp->fromArray(array(
             'namespace' => 'tinymce',
-            'area'      => 'setting_tiny.custom_plugins',
+            'area'      => 'custom-buttons',
             'xtype'     => 'textfield',
             'value'     => 'spellchecker,pagebreak,template,nonbreaking,visualchars,xhtmlxtras,directionality,layer,emotions,style,advimage,advlink,modxlink,searchreplace,print,contextmenu,paste,fullscreen,style,noneditable,nonbreaking,xhtmlxtras,visualchars,media,table,save,paste,searchreplace,insertdatetime,preview',
             'key'       => 'tiny.custom_plugins',
@@ -207,7 +242,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         }
         $tmp->fromArray(array(
             'namespace' => 'tinymce',
-            'area'      => 'setting_tiny.custom_buttons1',
+            'area'      => 'custom-buttons',
             'xtype'     => 'textfield',
             'value'     => 'save,cance,newdocument,bold,italic,underline,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,formatselect,fontselect,fontsizeselect,styleselect',
             'key'       => 'tiny.custom_buttons1',
@@ -219,7 +254,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         }
         $tmp->fromArray(array(
             'namespace' => 'tinymce',
-            'area'      => 'setting_tiny.custom_buttons2',
+            'area'      => 'custom-buttons',
             'xtype'     => 'textfield',
             'value'     => 'cut,copy,paste,pastetext,pasteword,selectall,search,bullist,numlist,outdent,indent,blockquote,undo,redo,link,anchor,image,cleanup,help,code,insertdate,inserttime,preview,fullpage,forecolor,backcolor,forecolorpicker,backcolorpicker',
             'key'       => 'tiny.custom_buttons2',
@@ -231,7 +266,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         }
         $tmp->fromArray(array(
             'namespace' => 'tinymce',
-            'area'      => 'setting_tiny.custom_buttons3',
+            'area'      => 'custom-buttons',
             'xtype'     => 'textfield',
             'value'     => 'tablecontrols,row_props,cell_props,delete_col,delete_row,col_after,col_before,row_after,row_before,split_cells,merge_cells,hr,removeformat,visualaid,sub,sup,charmap,emotions,media,advhr,print,ltr,rtl,fullscreen,separator',
             'key'       => 'tiny.custom_buttons3',
@@ -243,7 +278,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         }
         $tmp->fromArray(array(
             'namespace' => 'tinymce',
-            'area'      => 'setting_tiny.custom_buttons4',
+            'area'      => 'custom-buttons',
             'xtype'     => 'textfield',
             'value'     => 'insertlayer,moveforward,movebackward,absolute,styleprops,cite,acronym,abbr,del,ins,attribs,visualchars,nonbreaking,template,pagebreak,spellchecker',
             'key'       => 'tiny.custom_buttons4',

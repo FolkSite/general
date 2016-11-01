@@ -1,3 +1,3 @@
-Пакет настроек по умолчанию для MODX Revolution.
+РџР°РєРµС‚ РЅР°СЃС‚СЂРѕРµРє РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ MODX Revolution.
 Created by: Dmitry Tanzirev
 WWW: tanzirev.ru

@@ -3,9 +3,9 @@
 class siteBuilder {
     
     public $config = array(
-            'PACKAGE_NAME' => 'site',
+            'PACKAGE_NAME' => 'General',
             'PACKAGE_VERSION' => '1.0.0',
-            'PACKAGE_RELEASE' => 'beta',
+            'PACKAGE_RELEASE' => 'pl',
             'BUILD_RESOLVERS' => array()
         );
     public $category_attr = array();

@@ -10,7 +10,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_INSTALL:
     case xPDOTransport::ACTION_UPGRADE:
 
-    $modx->log(modX::LOG_LEVEL_INFO, 'Run <b>Create TVs</b>');
+        $modx->log(modX::LOG_LEVEL_INFO, 'Run <b>Create TVs</b>');
 
         if (isset($options['site_category']) && $options['site_category']) {
             if ($category = $modx->getObject('modCategory', array('category' => $options['site_category']))) {

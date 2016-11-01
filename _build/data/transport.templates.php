@@ -8,6 +8,11 @@ $tmp = array(
     'Главная страница' => array(
         'file' => 'home',
         'description' => ''
+    ),
+
+    'Внутренняя страница' => array(
+        'file' => 'inner',
+        'description' => ''
     )
 );
 $setted = false;

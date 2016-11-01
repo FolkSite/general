@@ -17,6 +17,17 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
             $site_start->set('hidemenu', true);
             $site_start->save();
         }
+
+        /* Главная страница */
+        $alias = 'index';
+        $templateId = $modx->getObject('modTemplate', array('templatename' => 'Главная страница'));
+        if ($resource = $modx->getObject('modResource', array('alias' => $alias))) {
+            $resource->set('template', $templateId->id);
+            $resource->set('content', '');
+            $resource->set('longtitle', '');
+            $resource->save();
+        }
+        
             
         /* robots.txt */
         $alias = 'robots';
@@ -166,6 +177,8 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
             ")
         ));
         $resource->save();
+
+
 
         break;
     case xPDOTransport::ACTION_UNINSTALL:

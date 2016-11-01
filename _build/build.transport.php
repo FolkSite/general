@@ -5,7 +5,6 @@ $resolvers = array(
     'addons',
     'rename_htaccess',
     'remove_changelog',
-    'cache_options',
     'category',
     'tvs',
     'resources',
