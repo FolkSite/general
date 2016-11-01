@@ -14,5 +14,5 @@ $resolvers = array(
     'fix_translit',
     'fix_file_permissions'
 );
-$builder = new siteBuilder('General', '1.0.0', 'beta', $resolvers);
+$builder = new siteBuilder('General', '1.0.0', 'pl', $resolvers);
 $builder->build();
