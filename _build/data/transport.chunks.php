@@ -5,61 +5,30 @@
 $chunks = array();
 
 $tmp = array(
-    'head' => array(
-        'file' => 'head',
-        'description' => ''
+    'site.head' => array(
+        'file' => 'site.head',
+        'description' => '',
+        'category' => 'General'
     ),
-    'menu' => array(
-        'file' => 'menu',
-        'description' => ''
+    'site.header' => array(
+        'file' => 'site.header',
+        'description' => 'Шапка сайта',
+        'category' => 'General'
     ),
-    'child_list' => array(
-        'file' => 'child_list',
-        'description' => ''
+    'site.content' => array(
+        'file' => 'site.content',
+        'description' => '',
+        'category' => 'General'
     ),
-    'header' => array(
-        'file' => 'header',
-        'description' => ''
+    'site.footer' => array(
+        'file' => 'site.footer',
+        'description' => 'Подвал сайта',
+        'category' => 'General'
     ),
-    'content' => array(
-        'file' => 'content',
-        'description' => ''
-    ),
-    'aside' => array(
-        'file' => 'aside',
-        'description' => ''
-    ),
-    'footer' => array(
-        'file' => 'footer',
-        'description' => ''
-    ),
-    'contact_form' => array(
-        'file' => 'contact_form',
-        'description' => ''
-    ),
-    'form.contact_form' => array(
-        'file' => 'form_contact_form',
-        'description' => ''
-    ),
-    'tpl.contact_form' => array(
-        'file' => 'tpl_contact_form',
-        'description' => ''
-    ),
-    'specialists' => array(
-        'file' => 'specialists',
-        'description' => ''
-    ),
-    'gallery' => array(
-        'file' => 'gallery',
-        'description' => ''
-    ),
-    'block.gallery' => array(
-        'file' => 'block_gallery',
-        'description' => ''
-    ),
-    'tpl.gallery' => array(
-        'file' => 'tpl_gallery',
-        'description' => ''
+    'site.footer.scripts' => array(
+        'file' => 'site.footer.scripts',
+        'description' => 'Скрипты',
+        'category' => 'General'
     ),
 );
 $setted = false;
@@ -69,7 +38,7 @@ foreach ($tmp as $k => $v) {
     $chunk = $this->modx->newObject('modChunk');
     $chunk->fromArray(array(
         'name' => $k,
-        'category' => 0,
+        'category' => $v['category'],
         'description' => @$v['description'],
         'content' => file_get_contents($this->config['PACKAGE_ROOT'] . 'core/components/'.strtolower($this->config['PACKAGE_NAME']).'/elements/chunks/chunk.' . $v['file'] . '.html'),
         'static' => false,

@@ -1,17 +1,19 @@
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
 [[*searchable:eq=`1`:then=`<meta name="robots" content="index, follow">`:else=`<meta name="robots" content="noindex, nofollow">`]]
 
 <base href="[[++site_url]]">
-<title>[[*pagetitle]]</title>
-<meta name="description" content="[[*introtext:replace=` "== «`:replace=`"==»`]]">
+<!-- Заголовок страницы -->
+<title>[[*longtitle:is=``:then=`[[*pagetitle]]`:else=`[[*longtitle]]`]] | [[++site_name]]</title>
+
+<!-- Данное значение часто используют(использовали) поисковые системы -->
+<meta name="description" content="[[*introtext]]">
+<meta name="keywords" content="[[+seoPro.keywords]]">
 
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="[[++assets_url]]components/[[++site_folder_name]]/web/vendor/jquery.min.js"><\/script>')</script>
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -21,13 +23,10 @@
   &minifyCss=`1`
   &minifyJs=`1`
   &cssSources=`
-      [[++assets_url]]components/[[++site_folder_name]]/bootstrap/css/bootstrap.min.css,
-      [[++assets_url]]components/[[++site_folder_name]]/fancybox/source/jquery.fancybox.css
+      [[++assets_url]]template/css/,
   `
   &jsSources=`
-      [[++assets_url]]components/[[++site_folder_name]]/bootstrap/js/bootstrap.min.js,
-      [[++assets_url]]components/[[++site_folder_name]]/fancybox/source/jquery.fancybox.pack.js,
-      [[++assets_url]]components/[[++site_folder_name]]/web/js/script.js,
+      [[++assets_url]]template/js/script.js,
   `
 ]]
 [[+MinifyX.css]]

@@ -10,6 +10,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_INSTALL:
     case xPDOTransport::ACTION_UPGRADE:
 
+        $modx->log(modX::LOG_LEVEL_INFO, 'Run <b>Settings update</b>');
         
         if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'friendly_alias_realtime'))) {
             $tmp = $modx->newObject('modSystemSetting');
@@ -160,6 +161,92 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
             'xtype'     => 'textfield',
             'value'     => 'ru_RU.utf8',
             'key'       => 'locale',
+        ), '', true, true);
+        $tmp->save();
+
+        //ACE
+        if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'ace.font_size'))) {
+            $tmp = $modx->newObject('modSystemSetting');
+        }
+        $tmp->fromArray(array(
+            'namespace' => 'ace',
+            'area'      => 'setting_ace.font_size',
+            'xtype'     => 'textfield',
+            'value'     => '14',
+            'key'       => 'ace.font_size',
+        ), '', true, true);
+        $tmp->save();
+
+        if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'ace.theme'))) {
+            $tmp = $modx->newObject('modSystemSetting');
+        }
+        $tmp->fromArray(array(
+            'namespace' => 'ace',
+            'area'      => 'setting_ace.theme',
+            'xtype'     => 'textfield',
+            'value'     => 'monokai',
+            'key'       => 'ace.theme',
+        ), '', true, true);
+        $tmp->save();
+
+        //TinyMCE
+        if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'tiny.custom_plugins'))) {
+            $tmp = $modx->newObject('modSystemSetting');
+        }
+        $tmp->fromArray(array(
+            'namespace' => 'tinymce',
+            'area'      => 'setting_tiny.custom_plugins',
+            'xtype'     => 'textfield',
+            'value'     => 'spellchecker,pagebreak,template,nonbreaking,visualchars,xhtmlxtras,directionality,layer,emotions,style,advimage,advlink,modxlink,searchreplace,print,contextmenu,paste,fullscreen,style,noneditable,nonbreaking,xhtmlxtras,visualchars,media,table,save,paste,searchreplace,insertdatetime,preview',
+            'key'       => 'tiny.custom_plugins',
+        ), '', true, true);
+        $tmp->save();
+
+        if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'tiny.custom_buttons1'))) {
+            $tmp = $modx->newObject('modSystemSetting');
+        }
+        $tmp->fromArray(array(
+            'namespace' => 'tinymce',
+            'area'      => 'setting_tiny.custom_buttons1',
+            'xtype'     => 'textfield',
+            'value'     => 'save,cance,newdocument,bold,italic,underline,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,formatselect,fontselect,fontsizeselect,styleselect',
+            'key'       => 'tiny.custom_buttons1',
+        ), '', true, true);
+        $tmp->save();
+
+        if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'tiny.custom_buttons2'))) {
+            $tmp = $modx->newObject('modSystemSetting');
+        }
+        $tmp->fromArray(array(
+            'namespace' => 'tinymce',
+            'area'      => 'setting_tiny.custom_buttons2',
+            'xtype'     => 'textfield',
+            'value'     => 'cut,copy,paste,pastetext,pasteword,selectall,search,bullist,numlist,outdent,indent,blockquote,undo,redo,link,anchor,image,cleanup,help,code,insertdate,inserttime,preview,fullpage,forecolor,backcolor,forecolorpicker,backcolorpicker',
+            'key'       => 'tiny.custom_buttons2',
+        ), '', true, true);
+        $tmp->save();
+
+        if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'tiny.custom_buttons3'))) {
+            $tmp = $modx->newObject('modSystemSetting');
+        }
+        $tmp->fromArray(array(
+            'namespace' => 'tinymce',
+            'area'      => 'setting_tiny.custom_buttons3',
+            'xtype'     => 'textfield',
+            'value'     => 'tablecontrols,row_props,cell_props,delete_col,delete_row,col_after,col_before,row_after,row_before,split_cells,merge_cells,hr,removeformat,visualaid,sub,sup,charmap,emotions,media,advhr,print,ltr,rtl,fullscreen,separator',
+            'key'       => 'tiny.custom_buttons3',
+        ), '', true, true);
+        $tmp->save();
+
+        if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'tiny.custom_buttons4'))) {
+            $tmp = $modx->newObject('modSystemSetting');
+        }
+        $tmp->fromArray(array(
+            'namespace' => 'tinymce',
+            'area'      => 'setting_tiny.custom_buttons4',
+            'xtype'     => 'textfield',
+            'value'     => 'insertlayer,moveforward,movebackward,absolute,styleprops,cite,acronym,abbr,del,ins,attribs,visualchars,nonbreaking,template,pagebreak,spellchecker',
+            'key'       => 'tiny.custom_buttons4',
         ), '', true, true);
         $tmp->save();
 

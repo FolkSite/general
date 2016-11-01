@@ -5,8 +5,8 @@
 $templates = array();
 
 $tmp = array(
-    'siteTemplate' => array(
-        'file' => 'sitetemplate',
+    'Главная страница' => array(
+        'file' => 'home',
         'description' => ''
     )
 );

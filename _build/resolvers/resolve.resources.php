@@ -10,6 +10,8 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_INSTALL:
     case xPDOTransport::ACTION_UPGRADE:
 
+        $modx->log(modX::LOG_LEVEL_INFO, 'Run <b>Resourse create</b>');
+
         $site_start = $modx->getObject('modResource', $modx->getOption('site_start'));
         if ($site_start) {
             $site_start->set('hidemenu', true);
@@ -124,82 +126,6 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
             ")
         ));
         $resource->save();
-
-        /* О компании */
-        $alias = 'about';
-        $parent = 0;
-        if (!$resource = $modx->getObject('modResource', array('alias' => $alias))) {
-            $resource = $modx->newObject('modResource');
-            $resource->set('content', preg_replace(array('/^\n/', '/[ ]{2,}|[\t]/'), '', "Какой-то текст"));
-        }
-        $resource->fromArray(array(
-            'class_key'    => 'modDocument',
-            'menuindex'    => 1,
-            'pagetitle'    => 'Информация о нас',
-            'menutitle'    => 'О компании',
-            'isfolder'     => 1,
-            'alias'        => $alias,
-            'uri'          => $alias . '/',
-            'uri_override' => 0,
-            'published'    => 1,
-            'publishedon'  => time(),
-            'hidemenu'     => 0,
-            'richtext'     => 1,
-            'parent'       => $parent,
-            'template'     => $templateId
-        ));
-        $resource->save();
-
-        /* Контактная информация */
-        $alias = 'contacts';
-        $parent = 0;
-        if (!$resource = $modx->getObject('modResource', array('alias' => $alias))) {
-            $resource = $modx->newObject('modResource');
-        }
-        $resource->fromArray(array(
-            'class_key'    => 'modDocument',
-            'menuindex'    => 6,
-            'pagetitle'    => 'Контактная информация',
-            'isfolder'     => 1,
-            'alias'        => $alias,
-            'uri'          => $alias . '/',
-            'uri_override' => 0,
-            'published'    => 1,
-            'publishedon'  => time(),
-            'hidemenu'     => 0,
-            'richtext'     => 0,
-            'parent'       => $parent,
-            'template'     => $templateId,
-            'content'      => preg_replace(array('/^\n/', '/[ ]{2,}|[\t]/'), '', '
-                <p>Адрес: [[*address]]</p>
-                <p>Телефон: [[*phone]]</p>
-                <p>E-mail: [[*email]]</p>
-                [[$contact_form]]
-            ')
-        ));
-        $resource->save();
-        
-        if (!$tmp = $modx->getObject('modSystemSetting', array('key' => 'site_contacts_id'))) {
-            $tmp = $modx->newObject('modSystemSetting');
-        }
-        $tmp->fromArray(array(
-            'namespace' => 'core',
-            'area'      => 'site',
-            'xtype'     => 'textfield',
-            'value'     => $resource->get('id'),
-            'key'       => 'site_contacts_id',
-        ), '', true, true);
-        $tmp->save();
-        
-        if (!$resource->getTVValue('address')) {
-            $resource->setTVValue('address', 'г. Москва, ул. Печатников, д. 17, оф. 350');
-        }
-        if (!$resource->getTVValue('phone')) {
-            $resource->setTVValue('phone', '+7 (499) 150-22-22');
-        }
-        if (!$resource->getTVValue('email')) {
-            $resource->setTVValue('email', 'info@company.ru');
-        }
 
         /* 404 */
         $alias = '404';

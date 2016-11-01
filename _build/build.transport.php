@@ -7,10 +7,10 @@ $resolvers = array(
     'remove_changelog',
     'cache_options',
     'category',
-    'template',
     'tvs',
     'resources',
     'settings',
+    'dashboard',
     'fix_translit',
     'fix_file_permissions'
 );

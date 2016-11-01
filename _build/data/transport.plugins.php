@@ -5,13 +5,6 @@
 $plugins = array();
 
 $tmp = array(
-    'addManagerCss' => array(
-        'file' => 'addmanagercss',
-        'description' => '',
-        'events' => array(
-            'OnManagerPageInit' => array()
-        )
-    ),
     'siteRedirect' => array(
         'file' => 'siteredirect',
         'description' => '',

@@ -133,8 +133,7 @@ switch (@$options[xPDOTransport::PACKAGE_ACTION]) {
 		    		'filetranslit' => '0.1.2-pl2',
 		            'UpgradeMODX' => '1.5.2-pl',
 		            'FormIt' => '2.2.10-pl',
-		            'autoRedirector' => '0.1.0-beta',
-		            'CKEditor' => '1.3.0-pl',
+		            'TinyMCE' => '4.3.4-pl',
 		            'Console' => '2.1.0-beta',
 		            'MIGX' => '2.9.6-pl',
 		            'translit' => '1.0.0-beta',
@@ -146,10 +145,12 @@ switch (@$options[xPDOTransport::PACKAGE_ACTION]) {
 		    array('name' => 'modstore.pro', 'packages' => array(
 		            'pdoTools' => '2.5.1-pl',
 		            'AjaxForm' => '1.1.5-pl',
-		            'MinifyX' => '1.4.4-pl',
 		            'phpThumbOn' => '1.3.1-pl',
 		            'tagElementPlugin' => '1.1.3-pl',
-		            'frontendManager' => '1.0.8-beta'
+		            'frontendManager' => '1.0.8-beta',
+		            'modDevTools' => '1.2.1-pl',
+		            'elementNotes' => '1.0.1-pl',
+		            'MinifyX' => '1.4.4-pl'
 		        )),
 	    );
 	    
